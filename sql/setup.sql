@@ -6,14 +6,15 @@ CREATE table cats (
   type VARCHAR NOT NULL,
   year INT,
   lives INT,
-  isSidekick VARCHAR NOT NULL
+  issidekick BOOLEAN NOT NULL,
+  url VARCHAR
 );
 
-INSERT INTO cats (name, type, year, lives, isSidekick) VALUES
-('felix', 'tuxedo', 1892, 3, 'false'),
-('Garfield', 'Orange Tabby', 1978, 7, 'false'),
-('Duchess', 'Angora', 1970, 9, 'false'),
-('stimpy', 'Manx', 1990, 1, 'true');
+INSERT INTO cats (name, type, year, lives, issidekick, url) VALUES
+('Felix', 'Tuxedo', 1892, 3, 'false', 'https://placekitten.com'),
+('Garfield', 'Orange Tabby', 1978, 7, 'false', 'https://placekitten.com'),
+('Duchess', 'Angora', 1970, 9, 'false', 'https://placekitten.com'),
+('stimpy', 'Manx', 1990, 1, 'false', 'https://placekitten.com');
 
 
 

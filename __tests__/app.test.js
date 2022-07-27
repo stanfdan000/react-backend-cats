@@ -3,7 +3,7 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 
-const { cats } = require('../data/cats');
+
 
 describe('cats routes', () => {
   beforeEach(() => {
@@ -12,22 +12,54 @@ describe('cats routes', () => {
 
   it('/cats should return a list of cats', async () => {
     const res = await request(app).get('/cats');
-    const expected = cats.map((cat) => {
-      return { id: cat.id, name: cat.name };
+     
+    const expected = [{ 
+      id: '4',
+      issidekick: false,
+      lives: 1,
+      name: 'stimpy',
+      type: 'Manx',
+      url: 'https://www.placekitten.com',
+      year: 1990,
+    }, 
+    { 
+      id: '2',
+      issidekick: false,
+      lives: 7,
+      name: 'Garfield',
+      type: 'Orange Tabby',
+      url: 'https://www.placekitten.com',
+      year: 1978,
+    }
+    ];
+      
+    
+    console.log(res.body);
+    expect(res.body[1]).toEqual({ 
+      id: '2',
+      issidekick: false,
+      lives: 7,
+      name: 'Garfield',
+      type: 'Orange Tabby',
+      url: 'https://placekitten.com',
+      year: 1978,
     });
-    expect(res.body).toEqual(expected);
   });
+
+
+
+
 
   it('/cats/:id should return cat detail', async () => {
     const res = await request(app).get('/cats/1');
     const felix = {
       id: '1',
+      issidekick: false,
+      lives: 3,
       name: 'Felix',
       type: 'Tuxedo',
-      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Felix_the_cat.svg/200px-Felix_the_cat.svg.png',
+      url: 'https://placekitten.com',
       year: 1892,
-      lives: 3,
-      isSidekick: false,
     };
     expect(res.body).toEqual(felix);
   });
