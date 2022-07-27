@@ -9,6 +9,6 @@ app.listen(PORT, () => {
 });
 
 process.on('exit', () => {
-  console.log('👋  Goodbye!');
+  console.log('  Goodbye!');
   pool.end();
 });
